@@ -5,6 +5,13 @@
  */
 package GUI.login;
 
+import GUI.Main.MainGUI;
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
+import javax.swing.JButton;
+import javax.swing.JRadioButton;
+import javax.swing.UIManager;
+
 /**
  *
  * @author Dulanjaya Tennekoon
@@ -21,6 +28,7 @@ public class Login extends javax.swing.JFrame {
     
     public void startUpSettings() {
         this.setTitle("Login Required : NTS");
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -32,6 +40,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         pnlLogin = new javax.swing.JPanel();
         pnlInfoEnter = new javax.swing.JPanel();
         lblUserName = new javax.swing.JLabel();
@@ -39,6 +48,10 @@ public class Login extends javax.swing.JFrame {
         lblPwd = new javax.swing.JLabel();
         txtfieldPwd = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        rbPrincipal = new javax.swing.JRadioButton();
+        rbLecturer = new javax.swing.JRadioButton();
+        rbNonAca = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,13 +60,58 @@ public class Login extends javax.swing.JFrame {
         lblPwd.setText("Password");
 
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbPrincipal);
+        rbPrincipal.setSelected(true);
+        rbPrincipal.setText("Principal");
+
+        buttonGroup1.add(rbLecturer);
+        rbLecturer.setText("Lecturer");
+
+        buttonGroup1.add(rbNonAca);
+        rbNonAca.setText("Non Academic");
+        rbNonAca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbNonAcaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbLecturer)
+                    .addComponent(rbPrincipal)
+                    .addComponent(rbNonAca))
+                .addContainerGap(9, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rbPrincipal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbLecturer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbNonAca)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout pnlInfoEnterLayout = new javax.swing.GroupLayout(pnlInfoEnter);
         pnlInfoEnter.setLayout(pnlInfoEnterLayout);
         pnlInfoEnterLayout.setHorizontalGroup(
             pnlInfoEnterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlInfoEnterLayout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(pnlInfoEnterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlInfoEnterLayout.createSequentialGroup()
@@ -64,12 +122,12 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(pnlInfoEnterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtfieldPwd, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                             .addComponent(txtUserName))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlInfoEnterLayout.setVerticalGroup(
             pnlInfoEnterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlInfoEnterLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInfoEnterLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlInfoEnterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUserName)
                     .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -77,9 +135,12 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(pnlInfoEnterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPwd)
                     .addComponent(txtfieldPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnLogin)
-                .addGap(7, 7, 7))
+                .addGap(88, 88, 88))
+            .addGroup(pnlInfoEnterLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlLoginLayout = new javax.swing.GroupLayout(pnlLogin);
@@ -95,7 +156,7 @@ public class Login extends javax.swing.JFrame {
             pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlInfoEnter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlInfoEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -119,6 +180,23 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void rbNonAcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNonAcaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbNonAcaActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        Enumeration<AbstractButton> logPerson = buttonGroup1.getElements();
+        int logIndex = 0;
+        while(logPerson.hasMoreElements()) {
+            JRadioButton logPersonal = (JRadioButton)logPerson.nextElement();
+            if(logPersonal.isSelected()) {
+                new MainGUI(logIndex).setVisible(true);
+                this.setVisible(false);
+            }
+            logIndex++;
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -131,8 +209,8 @@ public class Login extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+                    UIManager.setLookAndFeel("com.jtattoo.plaf.luna.LunaLookAndFeel");
+                    
                 }
             }
         } catch (ClassNotFoundException ex) {
@@ -156,10 +234,15 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblPwd;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JPanel pnlInfoEnter;
     private javax.swing.JPanel pnlLogin;
+    private javax.swing.JRadioButton rbLecturer;
+    private javax.swing.JRadioButton rbNonAca;
+    private javax.swing.JRadioButton rbPrincipal;
     private javax.swing.JTextField txtUserName;
     private javax.swing.JPasswordField txtfieldPwd;
     // End of variables declaration//GEN-END:variables
