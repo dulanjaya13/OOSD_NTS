@@ -6,6 +6,7 @@
 package Subject_Domain;
 
 import Lecturer_Domain.Lecturer;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 /**
@@ -13,32 +14,44 @@ import java.util.LinkedList;
  * @author Pasindu Tennage
  */
 public class Subject {
-    private String 	code ; //(Primary Key)
-    private String      name;
-    private int 	level;
-    private LinkedList<Lecturer_Domain.Lecturer> lecturers ;
+
+    private String code; //(Primary Key)
+    private String name;
+    private int level;
+    private LinkedList<Lecturer_Domain.Lecturer> lecturers;
     private Subject_Data_Access.Subject_Data_Access access;
-    
-    public Subject(){
+
+    public Subject(String code, String name, int level) {
+        this.code = code;
+        this.name = name;
+        this.level = level;
+        lecturers = new LinkedList<Lecturer>();
+
+    }
+
+    public Subject() {
         lecturers = new LinkedList<Lecturer>();
     }
-    
-    public void addANewSubject(){
-        getAccess().addANewSubject(code,name,level);
+
+    public void addANewSubject() throws ClassNotFoundException, SQLException {
+        getAccess().addANewSubject(code, name, level);
     }
-    public void editLecturerList(){
-        getAccess().editLecturerList(code,lecturers);
+
+    public void editLecturerList() {
+        getAccess().editLecturerList(code, lecturers);
     }
-    public void editSubjectInfo(){
-        getAccess().editSubjectInfo(code,name,level);
+
+    public void editSubjectInfo() throws ClassNotFoundException, SQLException {
+        getAccess().editSubjectInfo(code, name, level);
     }
-    public Subject getSubject(int code){
+
+    public Subject getSubject(int code) throws ClassNotFoundException, SQLException {
         return getAccess().getSubject(code);
     }
-    public Lecturer getSubject(String name){
+
+    public Subject getSubject(String name) throws ClassNotFoundException, SQLException {
         return getAccess().getSubject(name);
     }
-    
 
     /**
      * @return the code
@@ -96,7 +109,7 @@ public class Subject {
         this.lecturers = lecturers;
     }
 
-    public void addLecturer(Lecturer_Domain.Lecturer lecturer){
+    public void addLecturer(Lecturer_Domain.Lecturer lecturer) {
         this.lecturers.add(lecturer);
     }
 

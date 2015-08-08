@@ -40,7 +40,7 @@ public class Lecturer_Data_Access {
 
     public void editLecturerProfile(int id, String name, String picture, String nic, String address, Date dob) throws ClassNotFoundException, SQLException {
         String sql;
-        sql = "UPDATE details SET lecturer_id='" + id + "',name='"
+        sql = "UPDATE lecturer SET lecturer_id='" + id + "',name='"
                 + name + "',picture='" + picture + "',nic='" + nic + "',address='" + address
                 + "',date_of_birth='" + dob
                 + "' WHERE lecturer_id='" + id + "'";
