@@ -67,6 +67,11 @@ public class MainGUI extends javax.swing.JFrame {
         pnlsubMain.add("pnlRepeatWarnings", pnlRepeatWarnings);
         pnlsubMain.add("pnlSubjectInfo", pnlSubjectInformation);
         pnlsubMain.add("pnlODA", pnlOverallDailyAttendance);
+        pnlsubMain.add("pnlUpdateDailyAttendance",pnlUpdateDailyAttendance);
+        pnlsubMain.add("pnlUpdateSubjectAttendance", pnlUpdateSubjectAttendance);
+        pnlsubMain.add("pnlUpdateStudentInformation", pnlUpdateStudentInformation);
+        pnlsubMain.add("pnlUpdateLecturerInformation", pnlUpdateLecturerInformation);
+        pnlsubMain.add("pnlUpdateStudentMarks", pnlUpdateStudentMarks);
     }
 
     public void setLayoutSideBar() {
@@ -84,6 +89,8 @@ public class MainGUI extends javax.swing.JFrame {
         pnlControls.add("pnlLecturerControlsOfPrincipal",pnlLecturerControlsOfPrincipal);
         pnlControls.add("pnlStudentControlsofLecturer",pnlStudentControlsofLecturer);
         pnlControls.add("pnlNull" , pnlNull);
+        pnlControls.add("pnlUpdateStudentInformationControl",pnlUpdateStudentInformationControl);
+        pnlControls.add("pnlUpdateMarksControl",pnlUpdateMarksControl);
     }
 
     /**
@@ -121,8 +128,9 @@ public class MainGUI extends javax.swing.JFrame {
         pnlControl2 = new javax.swing.JPanel();
         btnStuInfoP1 = new javax.swing.JButton();
         btnLectInfoP1 = new javax.swing.JButton();
-        btnRepeatWarnP1 = new javax.swing.JButton();
-        btnRepeatWarnP2 = new javax.swing.JButton();
+        btnRepeatWarnP3 = new javax.swing.JButton();
+        btnRepeatWarnP4 = new javax.swing.JButton();
+        btnRepeatWarnP5 = new javax.swing.JButton();
         pnlsubMain = new javax.swing.JPanel();
         pnlStuInfo = new javax.swing.JPanel();
         pnlStuPersonalInfo = new javax.swing.JPanel();
@@ -206,6 +214,45 @@ public class MainGUI extends javax.swing.JFrame {
         cmbyear1 = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        pnlUpdateDailyAttendance = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jXDatePicker2 = new org.jdesktop.swingx.JXDatePicker();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jXDatePicker5 = new org.jdesktop.swingx.JXDatePicker();
+        jLabel20 = new javax.swing.JLabel();
+        pnlUpdateSubjectAttendance = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jLabel14 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jXDatePicker3 = new org.jdesktop.swingx.JXDatePicker();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel17 = new javax.swing.JLabel();
+        jXDatePicker4 = new org.jdesktop.swingx.JXDatePicker();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        pnlUpdateStudentInformation = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
+        jLabel21 = new javax.swing.JLabel();
+        pnlUpdateLecturerInformation = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTable7 = new javax.swing.JTable();
+        jLabel23 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        pnlUpdateStudentMarks = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTable8 = new javax.swing.JTable();
+        jLabel24 = new javax.swing.JLabel();
         pnlControls = new javax.swing.JPanel();
         pnlLecturerControlsOfPrincipal = new javax.swing.JPanel();
         pnlStuDbControls1 = new javax.swing.JPanel();
@@ -253,6 +300,16 @@ public class MainGUI extends javax.swing.JFrame {
         btnSearchbyID1 = new javax.swing.JButton();
         btnSearchbyName1 = new javax.swing.JButton();
         pnlNull = new javax.swing.JPanel();
+        pnlUpdateStudentInformationControl = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        jButton8 = new javax.swing.JButton();
+        pnlUpdateMarksControl = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox();
+        jLabel26 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox();
+        jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -395,7 +452,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(pnlControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlManualUpdatebtns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlSideBar.add(PrincipalPane, "card2");
@@ -480,7 +537,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(lblLecturer)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlControl1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlSideBar.add(LecturerPane, "card3");
@@ -490,31 +547,38 @@ public class MainGUI extends javax.swing.JFrame {
 
         pnlControl2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnStuInfoP1.setText("Student Information");
+        btnStuInfoP1.setText("Update Student Information");
         btnStuInfoP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStuInfoP1ActionPerformed(evt);
             }
         });
 
-        btnLectInfoP1.setText("Lecturer Information");
+        btnLectInfoP1.setText("Update Lecturer Information");
         btnLectInfoP1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLectInfoP1ActionPerformed(evt);
             }
         });
 
-        btnRepeatWarnP1.setText("Daily Attendance");
-        btnRepeatWarnP1.addActionListener(new java.awt.event.ActionListener() {
+        btnRepeatWarnP3.setText("Update Daily Attendance");
+        btnRepeatWarnP3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRepeatWarnP1ActionPerformed(evt);
+                btnRepeatWarnP3ActionPerformed(evt);
             }
         });
 
-        btnRepeatWarnP2.setText("Subject Attendance");
-        btnRepeatWarnP2.addActionListener(new java.awt.event.ActionListener() {
+        btnRepeatWarnP4.setText("Update Subject Attendance");
+        btnRepeatWarnP4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRepeatWarnP2ActionPerformed(evt);
+                btnRepeatWarnP4ActionPerformed(evt);
+            }
+        });
+
+        btnRepeatWarnP5.setText("Update Student Marks");
+        btnRepeatWarnP5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepeatWarnP5ActionPerformed(evt);
             }
         });
 
@@ -525,10 +589,11 @@ public class MainGUI extends javax.swing.JFrame {
             .addGroup(pnlControl2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlControl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRepeatWarnP1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLectInfoP1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLectInfoP1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                     .addComponent(btnStuInfoP1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRepeatWarnP2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRepeatWarnP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRepeatWarnP4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRepeatWarnP5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlControl2Layout.setVerticalGroup(
@@ -539,10 +604,12 @@ public class MainGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLectInfoP1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRepeatWarnP1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRepeatWarnP3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRepeatWarnP2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(btnRepeatWarnP4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRepeatWarnP5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout NonAcademicPaneLayout = new javax.swing.GroupLayout(NonAcademicPane);
@@ -565,7 +632,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(lblPrincipal1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlControl2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlSideBar.add(NonAcademicPane, "card4");
@@ -778,7 +845,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(pnlStuPersonalInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkHostel)
                     .addComponent(lblHostel))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlStuInfoLayout = new javax.swing.GroupLayout(pnlStuInfo);
@@ -900,7 +967,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(lblLecturerInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlLectInfoLayout = new javax.swing.GroupLayout(pnlLectInfo);
@@ -1101,7 +1168,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbLecturers, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(506, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlSubjectInformationLayout = new javax.swing.GroupLayout(pnlSubjectInformation);
@@ -1191,7 +1258,7 @@ public class MainGUI extends javax.swing.JFrame {
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlOverallDailyAttendanceLayout = new javax.swing.GroupLayout(pnlOverallDailyAttendance);
@@ -1212,6 +1279,322 @@ public class MainGUI extends javax.swing.JFrame {
         );
 
         pnlsubMain.add(pnlOverallDailyAttendance, "card6");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel12.setText("Update Daily Attendance");
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Student_ID", "Presence"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable4);
+
+        jButton3.setText("Update");
+
+        jButton4.setText("Cancel");
+
+        jLabel13.setText("Select Date");
+
+        jLabel19.setText("Current No of Working Days");
+
+        jLabel20.setText("Semester Started Date");
+
+        javax.swing.GroupLayout pnlUpdateDailyAttendanceLayout = new javax.swing.GroupLayout(pnlUpdateDailyAttendance);
+        pnlUpdateDailyAttendance.setLayout(pnlUpdateDailyAttendanceLayout);
+        pnlUpdateDailyAttendanceLayout.setHorizontalGroup(
+            pnlUpdateDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateDailyAttendanceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlUpdateDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUpdateDailyAttendanceLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlUpdateDailyAttendanceLayout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlUpdateDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jXDatePicker2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jXDatePicker5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnlUpdateDailyAttendanceLayout.createSequentialGroup()
+                                .addGroup(pnlUpdateDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel20))
+                                .addGap(0, 74, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        pnlUpdateDailyAttendanceLayout.setVerticalGroup(
+            pnlUpdateDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdateDailyAttendanceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlUpdateDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlUpdateDailyAttendanceLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jXDatePicker5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlUpdateDailyAttendanceLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        pnlsubMain.add(pnlUpdateDailyAttendance, "card7");
+
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Student_ID", "Presence"
+            }
+        ));
+        jScrollPane6.setViewportView(jTable5);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel14.setText("Update Subject Attendance");
+
+        jButton5.setText("Cancel");
+
+        jButton6.setText("Update");
+
+        jLabel15.setText("Select Date");
+
+        jLabel16.setText("Select Subject");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Subject", "Subject1", "Subject2", "Subject3" }));
+
+        jLabel17.setText("Semester Started Date");
+
+        jLabel18.setText("Current No of Lectures");
+
+        javax.swing.GroupLayout pnlUpdateSubjectAttendanceLayout = new javax.swing.GroupLayout(pnlUpdateSubjectAttendance);
+        pnlUpdateSubjectAttendance.setLayout(pnlUpdateSubjectAttendanceLayout);
+        pnlUpdateSubjectAttendanceLayout.setHorizontalGroup(
+            pnlUpdateSubjectAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateSubjectAttendanceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlUpdateSubjectAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUpdateSubjectAttendanceLayout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlUpdateSubjectAttendanceLayout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlUpdateSubjectAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jXDatePicker3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jXDatePicker4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnlUpdateSubjectAttendanceLayout.createSequentialGroup()
+                                .addGroup(pnlUpdateSubjectAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel17))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        pnlUpdateSubjectAttendanceLayout.setVerticalGroup(
+            pnlUpdateSubjectAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdateSubjectAttendanceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlUpdateSubjectAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlUpdateSubjectAttendanceLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jXDatePicker4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jXDatePicker3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlUpdateSubjectAttendanceLayout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        pnlsubMain.add(pnlUpdateSubjectAttendance, "card8");
+
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "StudentID", "StudentName", "Address", "Title 4"
+            }
+        ));
+        jScrollPane7.setViewportView(jTable6);
+        if (jTable6.getColumnModel().getColumnCount() > 0) {
+            jTable6.getColumnModel().getColumn(1).setHeaderValue("StudentName");
+            jTable6.getColumnModel().getColumn(3).setHeaderValue("Title 4");
+        }
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel21.setText("Update Student Information");
+
+        javax.swing.GroupLayout pnlUpdateStudentInformationLayout = new javax.swing.GroupLayout(pnlUpdateStudentInformation);
+        pnlUpdateStudentInformation.setLayout(pnlUpdateStudentInformationLayout);
+        pnlUpdateStudentInformationLayout.setHorizontalGroup(
+            pnlUpdateStudentInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateStudentInformationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlUpdateStudentInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUpdateStudentInformationLayout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnlUpdateStudentInformationLayout.setVerticalGroup(
+            pnlUpdateStudentInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateStudentInformationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pnlsubMain.add(pnlUpdateStudentInformation, "card9");
+
+        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "LecturerID", "LecturerName", "Address", "Title 4"
+            }
+        ));
+        jScrollPane8.setViewportView(jTable7);
+        if (jTable7.getColumnModel().getColumnCount() > 0) {
+            jTable7.getColumnModel().getColumn(1).setHeaderValue("StudentName");
+            jTable7.getColumnModel().getColumn(3).setHeaderValue("Title 4");
+        }
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel23.setText("Update Lecturer Information");
+
+        jButton7.setText("Update");
+
+        javax.swing.GroupLayout pnlUpdateLecturerInformationLayout = new javax.swing.GroupLayout(pnlUpdateLecturerInformation);
+        pnlUpdateLecturerInformation.setLayout(pnlUpdateLecturerInformationLayout);
+        pnlUpdateLecturerInformationLayout.setHorizontalGroup(
+            pnlUpdateLecturerInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateLecturerInformationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlUpdateLecturerInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUpdateLecturerInformationLayout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdateLecturerInformationLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        pnlUpdateLecturerInformationLayout.setVerticalGroup(
+            pnlUpdateLecturerInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateLecturerInformationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel23)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton7)
+                .addContainerGap())
+        );
+
+        pnlsubMain.add(pnlUpdateLecturerInformation, "card10");
+
+        jTable8.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "StudentID", "CA1", "CA2", "CA3", "CA4", "CA5", "FinalExam"
+            }
+        ));
+        jScrollPane9.setViewportView(jTable8);
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel24.setText("Update Student Marks");
+
+        javax.swing.GroupLayout pnlUpdateStudentMarksLayout = new javax.swing.GroupLayout(pnlUpdateStudentMarks);
+        pnlUpdateStudentMarks.setLayout(pnlUpdateStudentMarksLayout);
+        pnlUpdateStudentMarksLayout.setHorizontalGroup(
+            pnlUpdateStudentMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateStudentMarksLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlUpdateStudentMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUpdateStudentMarksLayout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnlUpdateStudentMarksLayout.setVerticalGroup(
+            pnlUpdateStudentMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateStudentMarksLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel24)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pnlsubMain.add(pnlUpdateStudentMarks, "card11");
 
         javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
         pnlMain.setLayout(pnlMainLayout);
@@ -1731,6 +2114,90 @@ public class MainGUI extends javax.swing.JFrame {
 
         pnlControls.add(pnlNull, "card5");
 
+        pnlUpdateStudentInformationControl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel22.setText("Select Batch");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton8.setText("Update");
+
+        javax.swing.GroupLayout pnlUpdateStudentInformationControlLayout = new javax.swing.GroupLayout(pnlUpdateStudentInformationControl);
+        pnlUpdateStudentInformationControl.setLayout(pnlUpdateStudentInformationControlLayout);
+        pnlUpdateStudentInformationControlLayout.setHorizontalGroup(
+            pnlUpdateStudentInformationControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdateStudentInformationControlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlUpdateStudentInformationControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlUpdateStudentInformationControlLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox2, 0, 269, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlUpdateStudentInformationControlLayout.setVerticalGroup(
+            pnlUpdateStudentInformationControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateStudentInformationControlLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(pnlUpdateStudentInformationControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(589, Short.MAX_VALUE))
+        );
+
+        pnlControls.add(pnlUpdateStudentInformationControl, "card6");
+
+        jLabel25.setText("Select Batch");
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel26.setText("Select Subject");
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton9.setText("Update");
+
+        javax.swing.GroupLayout pnlUpdateMarksControlLayout = new javax.swing.GroupLayout(pnlUpdateMarksControl);
+        pnlUpdateMarksControl.setLayout(pnlUpdateMarksControlLayout);
+        pnlUpdateMarksControlLayout.setHorizontalGroup(
+            pnlUpdateMarksControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateMarksControlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlUpdateMarksControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUpdateMarksControlLayout.createSequentialGroup()
+                        .addGroup(pnlUpdateMarksControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel25))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlUpdateMarksControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox3, 0, 270, Short.MAX_VALUE)
+                            .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdateMarksControlLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton9)))
+                .addContainerGap())
+        );
+        pnlUpdateMarksControlLayout.setVerticalGroup(
+            pnlUpdateMarksControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateMarksControlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlUpdateMarksControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlUpdateMarksControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton9)
+                .addContainerGap(618, Short.MAX_VALUE))
+        );
+
+        pnlControls.add(pnlUpdateMarksControl, "card7");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1746,7 +2213,7 @@ public class MainGUI extends javax.swing.JFrame {
             .addComponent(pnlMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlControls, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1885,20 +2352,27 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNextRecord2ActionPerformed
 
     private void btnStuInfoP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStuInfoP1ActionPerformed
-        // TODO add your handling code here:
+        layoutSubMain.show(pnlsubMain, "pnlUpdateStudentInformation");
+        layoutControl.show(pnlControls, "pnlUpdateStudentInformationControl");
     }//GEN-LAST:event_btnStuInfoP1ActionPerformed
 
     private void btnLectInfoP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLectInfoP1ActionPerformed
-        // TODO add your handling code here:
+        layoutSubMain.show(pnlsubMain, "pnlUpdateLecturerInformation");
+        layoutControl.show(pnlControls,"pnlNull");
     }//GEN-LAST:event_btnLectInfoP1ActionPerformed
 
-    private void btnRepeatWarnP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepeatWarnP1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRepeatWarnP1ActionPerformed
+    private void btnRepeatWarnP3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepeatWarnP3ActionPerformed
+        layoutSubMain.show(pnlsubMain, "pnlUpdateDailyAttendance");
+    }//GEN-LAST:event_btnRepeatWarnP3ActionPerformed
 
-    private void btnRepeatWarnP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepeatWarnP2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRepeatWarnP2ActionPerformed
+    private void btnRepeatWarnP4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepeatWarnP4ActionPerformed
+        layoutSubMain.show(pnlsubMain, "pnlUpdateSubjectAttendance");
+    }//GEN-LAST:event_btnRepeatWarnP4ActionPerformed
+
+    private void btnRepeatWarnP5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepeatWarnP5ActionPerformed
+        layoutSubMain.show(pnlsubMain, "pnlUpdateStudentMarks");
+        layoutControl.show(pnlControls,"pnlUpdateMarksControl");
+    }//GEN-LAST:event_btnRepeatWarnP5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1960,8 +2434,9 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnPrintCV;
     private javax.swing.JButton btnRepeatWarnL;
     private javax.swing.JButton btnRepeatWarnP;
-    private javax.swing.JButton btnRepeatWarnP1;
-    private javax.swing.JButton btnRepeatWarnP2;
+    private javax.swing.JButton btnRepeatWarnP3;
+    private javax.swing.JButton btnRepeatWarnP4;
+    private javax.swing.JButton btnRepeatWarnP5;
     private javax.swing.JButton btnSearchbyID;
     private javax.swing.JButton btnSearchbyID1;
     private javax.swing.JButton btnSearchbyName;
@@ -1985,10 +2460,36 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbyear1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2004,14 +2505,30 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
+    private javax.swing.JTable jTable6;
+    private javax.swing.JTable jTable7;
+    private javax.swing.JTable jTable8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker3;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker4;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker5;
     private javax.swing.JScrollPane jspAddress;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblBatch;
@@ -2075,6 +2592,13 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnlStudentControlsofLecturer;
     private javax.swing.JPanel pnlStudentControlsofPrincipal;
     private javax.swing.JPanel pnlSubjectInformation;
+    private javax.swing.JPanel pnlUpdateDailyAttendance;
+    private javax.swing.JPanel pnlUpdateLecturerInformation;
+    private javax.swing.JPanel pnlUpdateMarksControl;
+    private javax.swing.JPanel pnlUpdateStudentInformation;
+    private javax.swing.JPanel pnlUpdateStudentInformationControl;
+    private javax.swing.JPanel pnlUpdateStudentMarks;
+    private javax.swing.JPanel pnlUpdateSubjectAttendance;
     private javax.swing.JPanel pnlsubLecturerInfo;
     private javax.swing.JPanel pnlsubMain;
     private javax.swing.JPanel pnlsubOverallDailyAttendance;
