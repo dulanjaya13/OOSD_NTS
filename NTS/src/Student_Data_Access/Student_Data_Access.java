@@ -125,5 +125,8 @@ public class Student_Data_Access {
 
         connector.updateTable(sql);
     }
+    public int[][] getDailyAttendance(int id) {
+        return null;
+    }
 
 }

@@ -75,6 +75,9 @@ public class Student  {
     public void updateStudent() throws ClassNotFoundException, SQLException{
         getAccess().updateStudent(id,name,dob,batch,address,nic,phone,date,guadian1Name,guadian1Telephone,guadian1Address,guadian2Name,guadian2Telephone,guadian2Address,isHostel,level,picture);
     }
+    public int[][] getDailyAttendace(){
+        return getAccess().getDailyAttendance(id);
+    }
     
     public int getID() {
         return id;
