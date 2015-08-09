@@ -48,7 +48,7 @@ public class Subject_Data_Access {
 
     public Subject getSubject(String name) throws ClassNotFoundException, SQLException {
         String sql;
-        sql = "SELECT * FROM subject WHERE '" + "'name LIKE '%" + name + "%'";
+        sql = "SELECT * FROM subject WHERE name LIKE '%" + name + "%'";
 
         //result set to get selected row of the database
         ResultSet rs = connector.getQuerry(sql);
@@ -69,7 +69,7 @@ public class Subject_Data_Access {
 
     public Subject getSubject(int code) throws ClassNotFoundException, SQLException {
         String sql;
-        sql = "SELECT * FROM subject WHERE '" + "'subject_code LIKE '%" + code + "%'";
+        sql = "SELECT * FROM subject WHERE subject_code LIKE '%" + code + "%'";
 
         //result set to get selected row of the database
         ResultSet rs = connector.getQuerry(sql);

@@ -31,14 +31,14 @@ public class Student_Data_Access {
                 + Guadian1Name + "','" + Guadian1Telephone + "', '" + Guadian1Address + "', '"
                 + Guadian2Name + "','" + Guadian2Telephone + "', '" + Guadian2Address + "', '"
                 + ((hostel) ? 1 : 0) + "' , '" + level + "','" + Picture + "')";
+        
         connector.updateTable(sql);
     }
 
     public Student getProfile(String name, int batch, int level) throws ClassNotFoundException, SQLException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String sql;
-        sql = "SELECT * FROM student WHERE '" + "'name LIKE '%" + name + "%'" + "'batch LIKE '%" + batch + "%'"
-                + "'level LIKE '%" + level + "%'";
+        sql = "SELECT * FROM student WHERE name LIKE '%" + name + "%' AND batch LIKE '%"+ batch + "%' AND level LIKE '%"+ level + "%'";
 
         //result set to get selected row of the database
         ResultSet rs = connector.getQuerry(sql);
@@ -65,6 +65,7 @@ public class Student_Data_Access {
             v.add(rs.getString("picture"));
         }
         //create new student object
+        //this throwa an exception when all three fields are not matching
         Student student = new Student((int) v.get(0), (String) v.get(1), (Date) v.get(2), (int) v.get(3),
                 (String) v.get(4), (String) v.get(5), (int) v.get(6), (Date) v.get(7), (String) v.get(8), (int) v.get(9), (String) v.get(10),
                 (String) v.get(11), (int) v.get(12), (String) v.get(13), (Boolean) v.get(14), (int) v.get(15), (String) v.get(16));
@@ -75,7 +76,7 @@ public class Student_Data_Access {
     public Student getProfile(int id) throws ClassNotFoundException, SQLException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String sql;
-        sql = "SELECT * FROM student WHERE '" + "'student_id LIKE '%" + id + "%'";
+        sql = "SELECT * FROM student WHERE student_id LIKE '%" + id + "%'";
 
         //result set to get selected row of the database
         ResultSet rs = connector.getQuerry(sql);
@@ -124,6 +125,10 @@ public class Student_Data_Access {
                 + "' WHERE student_id='" + id + "'";
 
         connector.updateTable(sql);
+    }
+    
+    public int[][] getDailyAttendance(int id) {
+        return null;
     }
 
 }

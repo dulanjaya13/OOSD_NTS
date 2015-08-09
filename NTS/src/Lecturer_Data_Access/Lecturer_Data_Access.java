@@ -49,7 +49,7 @@ public class Lecturer_Data_Access {
 
     public Lecturer getLecturerProfile(int id) throws ClassNotFoundException, SQLException {
         String sql;
-        sql = "SELECT * FROM lecturer WHERE '" + "'lecturer_id LIKE '%" + id + "%'";
+        sql = "SELECT * FROM lecturer WHERE lecturer_id LIKE '%" + id + "%'";
 
         //result set to get selected row of the database
         ResultSet rs = connector.getQuerry(sql);
@@ -74,7 +74,7 @@ public class Lecturer_Data_Access {
 
     public Lecturer getLecturerProfile(String Name) throws SQLException, ClassNotFoundException {
         String sql;
-        sql = "SELECT * FROM lecturer WHERE '" + "'name LIKE '%" + Name + "%'";
+        sql = "SELECT * FROM lecturer WHERE name LIKE '%" + Name + "%'";
 
         //result set to get selected row of the database
         ResultSet rs = connector.getQuerry(sql);
