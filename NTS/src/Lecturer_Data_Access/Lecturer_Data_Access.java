@@ -34,8 +34,15 @@ public class Lecturer_Data_Access {
         connector.updateTable(sql);
     }
 
-    public void editSubjectList(int id, LinkedList<Subject> subjects) {
-            //will be coded after mapping the database
+    public void editSubjectList(int id, LinkedList<Subject> subjects) throws ClassNotFoundException, SQLException {
+
+        String sql;
+        for (int i = 0; i < subjects.size(); i++) {
+            sql = "INSERT INTO lecturer_has_subject VALUES ('" + id + "', '" + subjects.get(i).getCode() + "')";
+            connector.updateTable(sql);
+
+        }
+
     }
 
     public void editLecturerProfile(int id, String name, String picture, String nic, String address, Date dob) throws ClassNotFoundException, SQLException {

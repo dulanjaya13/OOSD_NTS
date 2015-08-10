@@ -34,8 +34,14 @@ public class Subject_Data_Access {
     }
 
     //this will be added after mapping
-    public void editLecturerList(String code, LinkedList<Lecturer> lecturers) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void editLecturerList(String code, LinkedList<Lecturer> lecturers) throws ClassNotFoundException, SQLException {
+
+        String sql;
+        for (int i = 0; i < lecturers.size(); i++) {
+            sql = "INSERT INTO lecturer_has_subject VALUES ('" + lecturers.get(i).getID()+ "', '" + code + "')";
+            connector.updateTable(sql);
+
+        }
     }
 
     public void editSubjectInfo(String code, String name, int level) throws ClassNotFoundException, SQLException {
