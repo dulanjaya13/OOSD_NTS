@@ -6,6 +6,7 @@
 package Student_Domain;
 
 import Lecturer_Data_Access.Lecturer_Data_Access;
+import Student_Data_Access.Student_Data_Access;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -33,7 +34,7 @@ public class Student  {
     private	boolean isHostel ;
     private     int  level;
     private	String picture;//URL of the picture
-    private     Student_Data_Access.Student_Data_Access access;
+    private     Student_Data_Access access;
     /**
      * @return the id
      */
@@ -66,6 +67,17 @@ public class Student  {
     public void createNewStudent() throws ClassNotFoundException, SQLException{
         getAccess().createNewStudent(id,name,dob,batch,address,nic,phone,date,guadian1Name,guadian1Telephone,guadian1Address,guadian2Name,guadian2Telephone,guadian2Address,isHostel,level,picture );
     }
+    public static Object[][] getStudentList(int year){
+        return Student_Data_Access.getStudentList(year);
+    }
+    public static boolean isStudentExists(int id){
+        return Student_Data_Access.isStudentExists(id);
+    }
+    public static boolean isStudentExists(String name){
+        return Student_Data_Access.isStudentExists(name);
+    }
+    
+    
     public Student getProfile(String name,int batch,int level) throws ClassNotFoundException, SQLException{
         return getAccess().getProfile(name,batch,level);
     }
@@ -317,14 +329,14 @@ public class Student  {
     /**
      * @return the access
      */
-    public Student_Data_Access.Student_Data_Access getAccess() {
+    public Student_Data_Access getAccess() {
         return access;
     }
 
     /**
      * @param access the access to set
      */
-    public void setAccess(Student_Data_Access.Student_Data_Access access) {
+    public void setAccess(Student_Data_Access access) {
         this.access = access;
     }
 

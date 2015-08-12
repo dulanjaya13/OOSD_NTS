@@ -18,12 +18,24 @@ import java.util.Vector;
  */
 public class Student_Data_Access {
 
+    public static boolean isStudentExists(int id) {
+        return true;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static boolean isStudentExists(String name) {
+        return true;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     private DBConnector connector;
 
     public Student_Data_Access(DBConnector connector) {
         this.connector = connector;
     }
-
+    public static Object [][] getStudentList(int year){
+        return null;
+    }
     public void createNewStudent(int ID, String Name, Date DOB, int Batch, String Address, String NIC, int Phone, Date date, String Guadian1Name, int Guadian1Telephone, String Guadian1Address, String Guadian2Name, int Guadian2Telephone, String Guadian2Address, boolean hostel, int level, String Picture) throws ClassNotFoundException, SQLException {
         String sql;
         sql = "INSERT INTO student VALUES ('" + ID + "', '" + Name + "', '" + DOB + "','"
@@ -128,5 +140,7 @@ public class Student_Data_Access {
     public int[][] getDailyAttendance(int id) {
         return null;
     }
+
+    
 
 }
