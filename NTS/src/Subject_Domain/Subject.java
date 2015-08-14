@@ -37,7 +37,7 @@ public class Subject {
         getAccess().addANewSubject(code, name, level);
     }
 
-    public void editLecturerList() throws ClassNotFoundException, SQLException {
+    public void editLecturerList() {
         getAccess().editLecturerList(code, lecturers);
     }
 

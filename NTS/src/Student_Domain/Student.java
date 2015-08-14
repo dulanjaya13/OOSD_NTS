@@ -60,7 +60,7 @@ public class Student  {
     }
     //Another constructor for Student
     public Student(){
-
+                       
     }
     
     public void createNewStudent() throws ClassNotFoundException, SQLException{
@@ -69,17 +69,12 @@ public class Student  {
     public Student getProfile(String name,int batch,int level) throws ClassNotFoundException, SQLException{
         return getAccess().getProfile(name,batch,level);
     }
-    public  Student getProfile(int id) throws ClassNotFoundException, SQLException{
+    public Student getProfile(int id) throws ClassNotFoundException, SQLException{
         return getAccess().getProfile(id);
     }
     public void updateStudent() throws ClassNotFoundException, SQLException{
         getAccess().updateStudent(id,name,dob,batch,address,nic,phone,date,guadian1Name,guadian1Telephone,guadian1Address,guadian2Name,guadian2Telephone,guadian2Address,isHostel,level,picture);
     }
-    
-    //public void updateStudent(Student stu) throws ClassNotFoundException, SQLException {
-      //  getAccess().updateStudent(stu.getID(),stu.getName(),stu.getDOB(),stu.getBatch(),stu.getAddress(),stu.getNIC(),stu.getPhone(),stu.getDate(),stu.getGuadian1Name(),stu.getGuadian1Telephone(),stu.getGuadian1Address(),stu.getGuadian2Name(),stu.getGuadian2Telephone(),stu.getGuadian2Address(),stu.isIsHostel(),stu.getLevel(),stu.getPicture());     
-    //}
-    
     
     public int getID() {
         return id;

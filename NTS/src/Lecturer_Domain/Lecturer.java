@@ -36,7 +36,8 @@ public final class Lecturer {
         this.dob = dob;
         subjects = new LinkedList<Subject>();
     }
-    public Lecturer(){    
+    public Lecturer(){
+        
         subjects = new LinkedList<Subject>();
     }
     
@@ -46,7 +47,7 @@ public final class Lecturer {
     public void addANewLecturer() throws ClassNotFoundException, SQLException{
         getAccess().addANewLecturer(this.id,this.name,this.picture,this.nic,this.address,this.dob);
     }
-    public void editSubjectList() throws ClassNotFoundException, SQLException{
+    public void editSubjectList(){
         getAccess().editSubjectList(this.id,this.subjects);
     }
     public void editLecturerProfile() throws ClassNotFoundException, SQLException{
