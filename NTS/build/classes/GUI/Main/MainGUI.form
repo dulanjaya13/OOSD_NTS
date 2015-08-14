@@ -620,7 +620,7 @@
                                                   <Component id="txtDOReg" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="txtGuardPhone1" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="txtGuardAddress1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="tctIDno" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txtIDno" alignment="1" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
                                           </Group>
@@ -703,7 +703,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblIDNo" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tctIDno" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtIDno" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -772,6 +772,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtStuID">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblStuName">
                       <Properties>
@@ -779,6 +782,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtStuName">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblBatch">
                       <Properties>
@@ -786,6 +792,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtBatch">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblAddress">
                       <Properties>
@@ -801,6 +810,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JTextArea" name="txtAddress">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
                           </Properties>
@@ -812,7 +822,10 @@
                         <Property name="text" type="java.lang.String" value="NIC"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="tctIDno">
+                    <Component class="javax.swing.JTextField" name="txtIDno">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblPhone">
                       <Properties>
@@ -820,6 +833,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtPhone">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhoneActionPerformed"/>
                       </Events>
@@ -830,6 +846,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtDOB">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblDOReg">
                       <Properties>
@@ -837,6 +856,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtDOReg">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDORegActionPerformed"/>
                       </Events>
@@ -854,6 +876,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtGuardName1">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGuardName1ActionPerformed"/>
                       </Events>
@@ -864,6 +889,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtGuardPhone1">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblHostel">
                       <Properties>
@@ -884,8 +912,14 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtGuardAddress1">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtGuardAddress2">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblGuardAddress2">
                       <Properties>
@@ -898,8 +932,14 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtGuardPhone2">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtGuardName2">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGuardName2ActionPerformed"/>
                       </Events>
@@ -1777,7 +1817,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane5" pref="628" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane5" pref="613" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -2068,7 +2108,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane7" pref="628" max="32767" attributes="0"/>
+                          <Component id="jScrollPane7" pref="613" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -2166,7 +2206,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane8" pref="594" max="32767" attributes="0"/>
+                          <Component id="jScrollPane8" pref="579" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -2267,7 +2307,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane9" pref="628" max="32767" attributes="0"/>
+                          <Component id="jScrollPane9" pref="613" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -2350,11 +2390,38 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Container class="javax.swing.JPanel" name="pnlWelcome">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                  <CardConstraints cardName="card12"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="687" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="697" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlControls">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
@@ -2697,6 +2764,7 @@
                 <Component class="javax.swing.JButton" name="btnEditInfo">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Edit Information"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditInfoActionPerformed"/>
@@ -2733,7 +2801,7 @@
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="lblStudentID" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="txtStudentID" min="-2" pref="153" max="-2" attributes="0"/>
+                                          <Component id="txtSearchStudentbyID" min="-2" pref="153" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -2763,7 +2831,7 @@
                           <Component id="lblSearchStudent" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtStudentID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSearchStudentbyID" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblStudentID" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -2775,7 +2843,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnSearchbyName" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="172" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2789,7 +2857,7 @@
                     <Property name="text" type="java.lang.String" value="Search Student"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtStudentID">
+                <Component class="javax.swing.JTextField" name="txtSearchStudentbyID">
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblStudentID">
                   <Properties>
@@ -2807,6 +2875,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Search"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchbyIDActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSearchbyName">
                   <Properties>
@@ -2878,7 +2949,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="54" max="32767" attributes="0"/>
+                          <EmptySpace pref="50" max="32767" attributes="0"/>
                           <Component id="lblCurricular1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
@@ -2955,7 +3026,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="lblStuDbControls2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="31" max="32767" attributes="0"/>
+                          <EmptySpace pref="27" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3119,7 +3190,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="362" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="358" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -3153,7 +3224,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jComboBox2" pref="269" max="32767" attributes="0"/>
+                              <Component id="jComboBox2" pref="265" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -3170,7 +3241,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="jButton8" min="-2" pref="47" max="-2" attributes="0"/>
-                      <EmptySpace pref="589" max="32767" attributes="0"/>
+                      <EmptySpace pref="570" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3220,7 +3291,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jComboBox3" pref="270" max="32767" attributes="0"/>
+                                  <Component id="jComboBox3" pref="266" max="32767" attributes="0"/>
                                   <Component id="jComboBox4" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -3248,7 +3319,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="618" max="32767" attributes="0"/>
+                      <EmptySpace pref="599" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

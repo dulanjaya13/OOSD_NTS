@@ -5,22 +5,45 @@
  */
 package GUI.Main;
 
+import Connection.DBConnector;
+import Lecturer_Data_Access.Lecturer_Data_Access;
+import Lecturer_Domain.Lecturer;
+import Student_Data_Access.Student_Data_Access;
+import Student_Domain.Student;
 import java.awt.CardLayout;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
  * @author Dulanjaya Tennekoon
  */
-public class MainGUI extends javax.swing.JFrame {
+public class MainGUI extends javax.swing.JFrame implements MainGUIObserver{
 
     private CardLayout layoutSubMain = new CardLayout();
     private CardLayout layoutSideBar = new CardLayout();
     private CardLayout layoutControl = new CardLayout();
+    
+    private DBConnector dbase = new DBConnector();
+    private Student stu;
+    private Lecturer lec;
+    private Student_Data_Access stuAccess = new Student_Data_Access(dbase);
+    private Lecturer_Data_Access lecAccess = new Lecturer_Data_Access(dbase);
+    
+    private String app_name = "NTS";
+    
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     /**
      * Creates new form PrincipalWindow
      */
+    //constructors
     public MainGUI() {
         initComponents();
         startUpSettings();
@@ -31,7 +54,8 @@ public class MainGUI extends javax.swing.JFrame {
         startUpSettings();
         if (logId == 0) {
             layoutSideBar.show(pnlSideBar, "PrincipalPane");
-            layoutControl.show(pnlControls, "pnlLecturerControlsOfPrincipal");
+            layoutControl.show(pnlControls, "pnlNull");
+            layoutSubMain.show(pnlsubMain, "pnlWelcome");
         } else if(logId == 1) {
             layoutSideBar.show(pnlSideBar, "LecturerPane");
             layoutControl.show(pnlControls, "pnlStudentControlsofLecturer");
@@ -41,11 +65,14 @@ public class MainGUI extends javax.swing.JFrame {
         } else {
             System.exit(0);
         }
+        
     }
 
+    //start up settings
     public void startUpSettings() {
         setLayouts();
         frameSettings();
+        addListeners();
     }
 
     public void frameSettings() {
@@ -72,6 +99,7 @@ public class MainGUI extends javax.swing.JFrame {
         pnlsubMain.add("pnlUpdateStudentInformation", pnlUpdateStudentInformation);
         pnlsubMain.add("pnlUpdateLecturerInformation", pnlUpdateLecturerInformation);
         pnlsubMain.add("pnlUpdateStudentMarks", pnlUpdateStudentMarks);
+        pnlsubMain.add("pnlWelcome", pnlWelcome);
     }
 
     public void setLayoutSideBar() {
@@ -92,7 +120,73 @@ public class MainGUI extends javax.swing.JFrame {
         pnlControls.add("pnlUpdateStudentInformationControl",pnlUpdateStudentInformationControl);
         pnlControls.add("pnlUpdateMarksControl",pnlUpdateMarksControl);
     }
+    
+    //listeners
+    private void addListeners() {
+        //to enable all listeners
+        addtextEditingListeners();
+    }
+    
+    private void addtextEditingListeners() {
+        txtStuID.getDocument().addDocumentListener(new DocumentListener() {
 
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                btnEditInfo.setEnabled(true);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+            
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
+            }
+        });
+    }
+    
+    //gui service classes
+    private void promptMsg(String msg, int type, int type2) {
+        JOptionPane.showConfirmDialog(rootPane, msg, app_name, type, type2);
+    }
+    
+    //gui logic classes
+    @Override
+    public void searchStudentbyID() {
+        //this method is to set the information of searched student to the student information
+        try {   
+            stu = stuAccess.getProfile(Integer.parseInt(txtSearchStudentbyID.getText()));
+            txtStuID.setText(Integer.toString(stu.getID()));
+            txtStuName.setText(stu.getName());
+            txtDOB.setText(sdf.format(stu.getDOB()));
+            txtBatch.setText(Integer.toString(stu.getBatch()));
+            txtAddress.setText(stu.getAddress());
+            txtIDno.setText(stu.getNIC());
+            txtPhone.setText(Integer.toString(stu.getPhone()));
+            txtDOReg.setText(sdf.format(stu.getDate()));
+            txtGuardName1.setText(stu.getGuadian1Name());
+            txtGuardName2.setText(stu.getGuadian2Name());
+            txtGuardAddress1.setText(stu.getGuadian1Address());
+            txtGuardAddress2.setText(stu.getGuadian2Address());
+            txtGuardPhone1.setText(Integer.toString(stu.getGuadian1Telephone()));
+            txtGuardPhone2.setText(Integer.toString(stu.getGuadian1Telephone()));
+            txtGuardAddress2.setText(Integer.toString(stu.getGuadian2Telephone()));
+            chkHostel.setSelected(stu.isIsHostel());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException ex) {
+            promptMsg("Enter a valid ID!",JOptionPane.OK_OPTION,JOptionPane.WARNING_MESSAGE);
+        } catch (NullPointerException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+            promptMsg("Database is Empty!", JOptionPane.OK_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -145,7 +239,7 @@ public class MainGUI extends javax.swing.JFrame {
         jspAddress = new javax.swing.JScrollPane();
         txtAddress = new javax.swing.JTextArea();
         lblIDNo = new javax.swing.JLabel();
-        tctIDno = new javax.swing.JTextField();
+        txtIDno = new javax.swing.JTextField();
         lblPhone = new javax.swing.JLabel();
         txtPhone = new javax.swing.JTextField();
         lblDOB = new javax.swing.JLabel();
@@ -253,6 +347,7 @@ public class MainGUI extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         jTable8 = new javax.swing.JTable();
         jLabel24 = new javax.swing.JLabel();
+        pnlWelcome = new javax.swing.JPanel();
         pnlControls = new javax.swing.JPanel();
         pnlLecturerControlsOfPrincipal = new javax.swing.JPanel();
         pnlStuDbControls1 = new javax.swing.JPanel();
@@ -276,7 +371,7 @@ public class MainGUI extends javax.swing.JFrame {
         btnDeleteRecord = new javax.swing.JButton();
         pnlStudSearchP = new javax.swing.JPanel();
         lblSearchStudent = new javax.swing.JLabel();
-        txtStudentID = new javax.swing.JTextField();
+        txtSearchStudentbyID = new javax.swing.JTextField();
         lblStudentID = new javax.swing.JLabel();
         lblStudentName = new javax.swing.JLabel();
         txtStudentName = new javax.swing.JTextField();
@@ -647,20 +742,30 @@ public class MainGUI extends javax.swing.JFrame {
 
         lblStuID.setText("Student ID");
 
+        txtStuID.setEditable(false);
+
         lblStuName.setText("Student Name");
+
+        txtStuName.setEditable(false);
 
         lblBatch.setText("Batch");
 
+        txtBatch.setEditable(false);
+
         lblAddress.setText("Address");
 
+        txtAddress.setEditable(false);
         txtAddress.setColumns(20);
         txtAddress.setRows(5);
         jspAddress.setViewportView(txtAddress);
 
         lblIDNo.setText("NIC");
 
+        txtIDno.setEditable(false);
+
         lblPhone.setText("Phone Number");
 
+        txtPhone.setEditable(false);
         txtPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPhoneActionPerformed(evt);
@@ -669,8 +774,11 @@ public class MainGUI extends javax.swing.JFrame {
 
         lblDOB.setText("Date of Birth");
 
+        txtDOB.setEditable(false);
+
         lblDOReg.setText("Registration Date");
 
+        txtDOReg.setEditable(false);
         txtDOReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDORegActionPerformed(evt);
@@ -681,6 +789,7 @@ public class MainGUI extends javax.swing.JFrame {
 
         lblGuardName1.setText("Guardian1's Name");
 
+        txtGuardName1.setEditable(false);
         txtGuardName1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGuardName1ActionPerformed(evt);
@@ -688,6 +797,8 @@ public class MainGUI extends javax.swing.JFrame {
         });
 
         lblGuardPhone1.setText("Guardian1's Phone");
+
+        txtGuardPhone1.setEditable(false);
 
         lblHostel.setText("Hostel Student");
 
@@ -700,10 +811,17 @@ public class MainGUI extends javax.swing.JFrame {
 
         lblGuardAddress1.setText("Guardian1's Address");
 
+        txtGuardAddress1.setEditable(false);
+
+        txtGuardAddress2.setEditable(false);
+
         lblGuardAddress2.setText("Guardian2's Address");
 
         lblGuardPhone2.setText("Guardian2's Phone");
 
+        txtGuardPhone2.setEditable(false);
+
+        txtGuardName2.setEditable(false);
         txtGuardName2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGuardName2ActionPerformed(evt);
@@ -747,7 +865,7 @@ public class MainGUI extends javax.swing.JFrame {
                                     .addComponent(txtDOReg, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtGuardPhone1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtGuardAddress1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tctIDno))
+                                    .addComponent(txtIDno))
                                 .addGap(168, 168, 168))))
                     .addGroup(pnlStuPersonalInfoLayout.createSequentialGroup()
                         .addGroup(pnlStuPersonalInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -807,7 +925,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlStuPersonalInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblIDNo)
-                    .addComponent(tctIDno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIDno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(pnlStuPersonalInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPhone)
@@ -1358,7 +1476,7 @@ public class MainGUI extends javax.swing.JFrame {
                     .addGroup(pnlUpdateDailyAttendanceLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -1497,7 +1615,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel21)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1547,7 +1665,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel23)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton7)
                 .addContainerGap())
@@ -1590,11 +1708,24 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel24)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pnlsubMain.add(pnlUpdateStudentMarks, "card11");
+
+        javax.swing.GroupLayout pnlWelcomeLayout = new javax.swing.GroupLayout(pnlWelcome);
+        pnlWelcome.setLayout(pnlWelcomeLayout);
+        pnlWelcomeLayout.setHorizontalGroup(
+            pnlWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 687, Short.MAX_VALUE)
+        );
+        pnlWelcomeLayout.setVerticalGroup(
+            pnlWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 697, Short.MAX_VALUE)
+        );
+
+        pnlsubMain.add(pnlWelcome, "card12");
 
         javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
         pnlMain.setLayout(pnlMainLayout);
@@ -1616,6 +1747,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pnlControls.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnlControls.setLayout(new java.awt.CardLayout());
 
         pnlLecturerControlsOfPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -1785,6 +1917,7 @@ public class MainGUI extends javax.swing.JFrame {
         lblStuDbControls.setText("Student Database Controls");
 
         btnEditInfo.setText("Edit Information");
+        btnEditInfo.setEnabled(false);
         btnEditInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditInfoActionPerformed(evt);
@@ -1838,6 +1971,11 @@ public class MainGUI extends javax.swing.JFrame {
         lblStudentName.setText("Student Name");
 
         btnSearchbyID.setText("Search");
+        btnSearchbyID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchbyIDActionPerformed(evt);
+            }
+        });
 
         btnSearchbyName.setText("Search");
 
@@ -1856,7 +1994,7 @@ public class MainGUI extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStudSearchPLayout.createSequentialGroup()
                                 .addComponent(lblStudentID)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSearchStudentbyID, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStudSearchPLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnSearchbyID))
@@ -1877,7 +2015,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(lblSearchStudent)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlStudSearchPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearchStudentbyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblStudentID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearchbyID)
@@ -1887,7 +2025,7 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(lblStudentName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearchbyName)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlStudentControlsofPrincipalLayout = new javax.swing.GroupLayout(pnlStudentControlsofPrincipal);
@@ -1942,7 +2080,7 @@ public class MainGUI extends javax.swing.JFrame {
         pnlStudSpeInfoLLayout.setHorizontalGroup(
             pnlStudSpeInfoLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStudSpeInfoLLayout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addComponent(lblCurricular1)
                 .addGap(43, 43, 43))
             .addGroup(pnlStudSpeInfoLLayout.createSequentialGroup()
@@ -1996,7 +2134,7 @@ public class MainGUI extends javax.swing.JFrame {
             .addGroup(pnlStuDbControlsLLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblStuDbControls2)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         pnlStuDbControlsLLayout.setVerticalGroup(
             pnlStuDbControlsLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2105,7 +2243,7 @@ public class MainGUI extends javax.swing.JFrame {
         pnlNull.setLayout(pnlNullLayout);
         pnlNullLayout.setHorizontalGroup(
             pnlNullLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
+            .addGap(0, 358, Short.MAX_VALUE)
         );
         pnlNullLayout.setVerticalGroup(
             pnlNullLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2133,7 +2271,7 @@ public class MainGUI extends javax.swing.JFrame {
                     .addGroup(pnlUpdateStudentInformationControlLayout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox2, 0, 269, Short.MAX_VALUE)))
+                        .addComponent(jComboBox2, 0, 265, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlUpdateStudentInformationControlLayout.setVerticalGroup(
@@ -2145,7 +2283,7 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(589, Short.MAX_VALUE))
+                .addContainerGap(570, Short.MAX_VALUE))
         );
 
         pnlControls.add(pnlUpdateStudentInformationControl, "card6");
@@ -2173,7 +2311,7 @@ public class MainGUI extends javax.swing.JFrame {
                             .addComponent(jLabel25))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlUpdateMarksControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox3, 0, 270, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, 0, 266, Short.MAX_VALUE)
                             .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdateMarksControlLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -2193,7 +2331,7 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton9)
-                .addContainerGap(618, Short.MAX_VALUE))
+                .addContainerGap(599, Short.MAX_VALUE))
         );
 
         pnlControls.add(pnlUpdateMarksControl, "card7");
@@ -2373,6 +2511,10 @@ public class MainGUI extends javax.swing.JFrame {
         layoutSubMain.show(pnlsubMain, "pnlUpdateStudentMarks");
         layoutControl.show(pnlControls,"pnlUpdateMarksControl");
     }//GEN-LAST:event_btnRepeatWarnP5ActionPerformed
+
+    private void btnSearchbyIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchbyIDActionPerformed
+        searchStudentbyID();
+    }//GEN-LAST:event_btnSearchbyIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2599,10 +2741,10 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnlUpdateStudentInformationControl;
     private javax.swing.JPanel pnlUpdateStudentMarks;
     private javax.swing.JPanel pnlUpdateSubjectAttendance;
+    private javax.swing.JPanel pnlWelcome;
     private javax.swing.JPanel pnlsubLecturerInfo;
     private javax.swing.JPanel pnlsubMain;
     private javax.swing.JPanel pnlsubOverallDailyAttendance;
-    private javax.swing.JTextField tctIDno;
     private javax.swing.JTextArea txtAddress;
     private javax.swing.JTextField txtBatch;
     private javax.swing.JTextField txtDOB;
@@ -2613,11 +2755,12 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtGuardName2;
     private javax.swing.JTextField txtGuardPhone1;
     private javax.swing.JTextField txtGuardPhone2;
+    private javax.swing.JTextField txtIDno;
     private javax.swing.JTextField txtNoOFLectures;
     private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtSearchStudentbyID;
     private javax.swing.JTextField txtStuID;
     private javax.swing.JTextField txtStuName;
-    private javax.swing.JTextField txtStudentID;
     private javax.swing.JTextField txtStudentID1;
     private javax.swing.JTextField txtStudentName;
     private javax.swing.JTextField txtStudentName1;
