@@ -5,8 +5,6 @@
  */
 package GUI.Main;
 
-import Student_Domain.Student;
-
 /**
  *
  * @author Dulanjaya Tennekoon
@@ -16,16 +14,9 @@ public class DailyAttendance extends javax.swing.JFrame {
     /**
      * Creates new form OverallDailyAttendance
      */
-    
-    private Student stu;
-    
     public DailyAttendance() {
         initComponents();
         startupSettings();
-    }
-    
-    public DailyAttendance(Student stu) {
-        
     }
     
     public void startupSettings() {
@@ -49,13 +40,6 @@ public class DailyAttendance extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
-        lbldate2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-
-        setBackground(new java.awt.Color(204, 204, 204));
-        setResizable(false);
-
-        pnlsubOverallDailyAttendance.setBackground(new java.awt.Color(204, 204, 204));
 
         lbldate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbldate.setText("Semester Started");
@@ -63,13 +47,13 @@ public class DailyAttendance extends javax.swing.JFrame {
         jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Date", "Attendance"
+                "Date", "Status", "Leave"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -83,54 +67,46 @@ public class DailyAttendance extends javax.swing.JFrame {
         jLabel1.setText("0");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        lbldate2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lbldate2.setText("Semester");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout pnlsubOverallDailyAttendanceLayout = new javax.swing.GroupLayout(pnlsubOverallDailyAttendance);
         pnlsubOverallDailyAttendance.setLayout(pnlsubOverallDailyAttendanceLayout);
         pnlsubOverallDailyAttendanceLayout.setHorizontalGroup(
             pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlsubOverallDailyAttendanceLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel8)
+                .addGap(40, 40, 40)
                 .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlsubOverallDailyAttendanceLayout.createSequentialGroup()
-                        .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbldate)
-                            .addComponent(lbldate1)
-                            .addComponent(lbldate2))
-                        .addGap(25, 25, 25)
-                        .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jXDatePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlsubOverallDailyAttendanceLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel8)))
+                    .addComponent(lbldate)
+                    .addComponent(lbldate1))
+                .addGap(25, 25, 25)
+                .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlsubOverallDailyAttendanceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlsubOverallDailyAttendanceLayout.setVerticalGroup(
             pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlsubOverallDailyAttendanceLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlsubOverallDailyAttendanceLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbldate)
+                            .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbldate1)
+                            .addComponent(jLabel1)))
+                    .addGroup(pnlsubOverallDailyAttendanceLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbldate2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbldate)
-                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbldate1)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,8 +115,8 @@ public class DailyAttendance extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlsubOverallDailyAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlsubOverallDailyAttendance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +166,6 @@ public class DailyAttendance extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
@@ -198,7 +173,6 @@ public class DailyAttendance extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private javax.swing.JLabel lbldate;
     private javax.swing.JLabel lbldate1;
-    private javax.swing.JLabel lbldate2;
     private javax.swing.JPanel pnlsubOverallDailyAttendance;
     // End of variables declaration//GEN-END:variables
 }
