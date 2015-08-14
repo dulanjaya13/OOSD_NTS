@@ -7,10 +7,10 @@ package Lecturer_Data_Access;
 
 import Connection.DBConnector;
 import Lecturer_Domain.Lecturer;
-import Student_Domain.Student;
 import Subject_Domain.Subject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Vector;
@@ -103,5 +103,14 @@ public class Lecturer_Data_Access {
 
         return lecturer;
     }
-
+    
+    public ArrayList<String> getLectureNames() throws ClassNotFoundException, SQLException{
+        String sql = " SELECT name FROM lecturer ";
+        ResultSet rs = connector.getQuerry(sql);
+        ArrayList<String> lectures = new ArrayList<>();
+        while(rs.next()){
+            lectures.add(rs.getString("name"));
+        }
+        return lectures;
+    }
 }

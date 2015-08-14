@@ -5,6 +5,12 @@
  */
 package GUI.Main;
 
+import Lecturer_Data_Access.Lecturer_Data_Access;
+import Lecturer_Domain.Lecturer;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Dulanjaya Tennekoon
@@ -14,13 +20,40 @@ public class EditLecturerInformation extends javax.swing.JFrame {
     /**
      * Creates new form EditLecturerInformation
      */
+    private Lecturer_Data_Access lecAccess;
+    private Lecturer lec;
+    private MainGUIObserver observer;
+    private final String app_name = "NTS";
+    
     public EditLecturerInformation() {
         initComponents();
         startupSettings();
     }
     
+    public EditLecturerInformation(MainGUIObserver observer, Lecturer_Data_Access lecAccess, int lecId) {
+        this.lecAccess = lecAccess;
+        this.observer = observer;
+        initComponents();
+        startupSettings();
+        try {
+            lec = lecAccess.getLecturerProfile(lecId);
+            starupSettingsData();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EditLecturerInformation.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EditLecturerInformation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void startupSettings() {
         this.setLocationRelativeTo(null);
+    }
+    
+    public void starupSettingsData() {
+        txtlecId.setText(Integer.toString(lec.getID()));
+        txtlecName.setText(lec.getName());
+        txtlecNIC.setText(lec.getNIC());
+        txtlecAddress.setText(lec.getAddress());
     }
 
     /**
@@ -41,10 +74,10 @@ public class EditLecturerInformation extends javax.swing.JFrame {
         lblNIC = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtlecId = new javax.swing.JTextField();
+        txtlecName = new javax.swing.JTextField();
+        txtlecNIC = new javax.swing.JTextField();
+        txtlecAddress = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
         canvas1 = new java.awt.Canvas();
@@ -67,9 +100,11 @@ public class EditLecturerInformation extends javax.swing.JFrame {
 
         jLabel2.setText("Subjects");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtlecId.setEditable(false);
+
+        txtlecName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtlecNameActionPerformed(evt);
             }
         });
 
@@ -87,7 +122,7 @@ public class EditLecturerInformation extends javax.swing.JFrame {
                     .addGroup(pnlLecturerInfoFieldsLayout.createSequentialGroup()
                         .addComponent(lblLecturerID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtlecId, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlLecturerInfoFieldsLayout.createSequentialGroup()
                         .addGroup(pnlLecturerInfoFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLecturerName)
@@ -96,9 +131,9 @@ public class EditLecturerInformation extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlLecturerInfoFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField2)
+                            .addComponent(txtlecAddress, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtlecNIC, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtlecName)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,19 +148,19 @@ public class EditLecturerInformation extends javax.swing.JFrame {
                     .addGroup(pnlLecturerInfoFieldsLayout.createSequentialGroup()
                         .addGroup(pnlLecturerInfoFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblLecturerID)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtlecId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlLecturerInfoFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLecturerName)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtlecName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlLecturerInfoFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNIC)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtlecNIC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlLecturerInfoFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtlecAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlLecturerInfoFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -158,6 +193,11 @@ public class EditLecturerInformation extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButton7.setText("Save");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Cancel");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -234,13 +274,28 @@ public class EditLecturerInformation extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtlecNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtlecNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtlecNameActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try {
+            lec.setAccess(lecAccess);
+            lec.setName(txtlecName.getText());
+            lec.setNIC(txtlecNIC.getText());
+            lec.setAddress(txtlecAddress.getText());
+            lec.editLecturerProfile();
+            observer.searchLecturerbyID();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EditLecturerInformation.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EditLecturerInformation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,15 +342,15 @@ public class EditLecturerInformation extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblLecturerID;
     private javax.swing.JLabel lblLecturerInfo;
     private javax.swing.JLabel lblLecturerName;
     private javax.swing.JLabel lblNIC;
     private javax.swing.JPanel pnlLecturerInfoFields;
     private javax.swing.JPanel pnlsubLecturerInfo;
+    private javax.swing.JTextField txtlecAddress;
+    private javax.swing.JTextField txtlecId;
+    private javax.swing.JTextField txtlecNIC;
+    private javax.swing.JTextField txtlecName;
     // End of variables declaration//GEN-END:variables
 }

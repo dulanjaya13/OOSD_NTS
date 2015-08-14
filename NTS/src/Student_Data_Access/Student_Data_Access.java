@@ -9,6 +9,8 @@ import Connection.DBConnector;
 import Student_Domain.Student;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
@@ -112,18 +114,21 @@ public class Student_Data_Access {
 
     public void updateStudent(int id, String name, Date dob, int batch, String address, String nic, int phone, Date date, String guadian1Name, int guadian1Telephone, String guadian1Address, String guadian2Name, int guadian2Telephone, String guadian2Address, boolean hostel, int level, String picture) throws ClassNotFoundException, SQLException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
+        int i = 0;
+        if (hostel){
+            i = 1;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String sql;
         sql = "UPDATE student SET student_id='" + id + "',name='" + name
-                + "',date_of_birth='" + dob + "',batch='" + batch + "',address='"
+                + "',date_of_birth='" + sdf.format(dob) + "',batch='" + batch + "',address='"
                 + address + "',nic='" + nic + "',phone_number='"
-                + phone + "',registration_date='" + date + "',guardian_one_name='"
+                + phone + "',registration_date='" + sdf.format(date) + "',guardian_one_name='"
                 + guadian1Name + "',guardian_one_telephone='" + guadian1Telephone + "',guardian_one_address='"
                 + guadian1Address + "',guardian_two_name='" + guadian2Name+ "',guardian_two_telephone='"
-                +guadian2Telephone+ "',guardian_two_address='" + guadian2Address + "',hostel_student='"
-                + hostel+ "',level='" + level+ "',picture='" + picture
+                +guadian2Telephone+ "',guardian_two_address='" + guadian2Address + "',hostel_student= '"
+                + i + "',level='" + level+ "',picture='" + picture
                 + "' WHERE student_id='" + id + "'";
-
         connector.updateTable(sql);
     }
     
@@ -131,4 +136,13 @@ public class Student_Data_Access {
         return null;
     }
 
+    public ArrayList<String> getStudentNames() throws ClassNotFoundException, SQLException{
+        String sql = " SELECT name FROM student ";
+        ResultSet rs = connector.getQuerry(sql);
+        ArrayList<String> students = new ArrayList<>();
+        while(rs.next()){
+            students.add(rs.getString("name"));
+        }
+        return students;
+    }
 }
