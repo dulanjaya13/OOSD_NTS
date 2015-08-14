@@ -28,8 +28,8 @@ public class DBConnector {
     static final String DB_URL = "jdbc:mysql://localhost:3306/nts_database";
 
     //  Database credentials
-    static final String USER = "username";
-    static final String PASS = "password";
+    static final String USER = "root";
+    static final String PASS = "Nations@1234";
     
     //check and avoid making a public constructor in a singleton
     public DBConnector() {

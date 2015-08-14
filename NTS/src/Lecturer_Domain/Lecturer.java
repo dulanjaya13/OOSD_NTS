@@ -47,7 +47,7 @@ public final class Lecturer {
     public void addANewLecturer() throws ClassNotFoundException, SQLException{
         getAccess().addANewLecturer(this.id,this.name,this.picture,this.nic,this.address,this.dob);
     }
-    public void editSubjectList(){
+    public void editSubjectList() throws ClassNotFoundException, SQLException{
         getAccess().editSubjectList(this.id,this.subjects);
     }
     public void editLecturerProfile() throws ClassNotFoundException, SQLException{
