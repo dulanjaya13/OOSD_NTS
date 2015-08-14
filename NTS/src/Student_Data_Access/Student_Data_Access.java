@@ -45,6 +45,9 @@ public class Student_Data_Access {
                 + ((hostel) ? 1 : 0) + "' , '" + level + "','" + Picture + "')";
         connector.updateTable(sql);
     }
+    public Student getStudent(String name){
+        return null;
+    }
 
     public Student getProfile(String name, int batch, int level) throws ClassNotFoundException, SQLException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -84,6 +84,9 @@ public class Student  {
     public Student getProfile(int id) throws ClassNotFoundException, SQLException{
         return getAccess().getProfile(id);
     }
+    public Student getProfile(String name) throws ClassNotFoundException, SQLException{
+        return getAccess().getProfile(name);
+    }
     public void updateStudent() throws ClassNotFoundException, SQLException{
         getAccess().updateStudent(id,name,dob,batch,address,nic,phone,date,guadian1Name,guadian1Telephone,guadian1Address,guadian2Name,guadian2Telephone,guadian2Address,isHostel,level,picture);
     }

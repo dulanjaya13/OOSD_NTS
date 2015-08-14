@@ -5,7 +5,7 @@
  */
 package Attendance_Data_Access;
 
-import Coneection.DBConnector;
+import Connection.DBConnector;
 import java.util.Date;
 
 /**
