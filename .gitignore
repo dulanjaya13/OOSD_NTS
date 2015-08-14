@@ -44,3 +44,5 @@ Temporary Items
 NTS/nbproject/build-impl.xml
 *.xml
 NTS/nbproject/build-impl.xml
+*.class
+*.class

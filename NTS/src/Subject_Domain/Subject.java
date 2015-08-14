@@ -45,12 +45,12 @@ public class Subject {
         getAccess().editSubjectInfo(code, name, level);
     }
 
-    public Subject getSubject(int code) throws ClassNotFoundException, SQLException {
-        return getAccess().getSubject(code);
+    public Subject getSubjectByCode(String code) throws ClassNotFoundException, SQLException {
+        return getAccess().getSubjectByCode(code);
     }
 
-    public Subject getSubject(String name) throws ClassNotFoundException, SQLException {
-        return getAccess().getSubject(name);
+    public Subject getSubjectByName(String name) throws ClassNotFoundException, SQLException {
+        return getAccess().getSubjectByName(name);
     }
 
     /**

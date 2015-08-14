@@ -52,7 +52,7 @@ public class Subject_Data_Access {
         connector.updateTable(sql);
     }
 
-    public Subject getSubject(String name) throws ClassNotFoundException, SQLException {
+    public Subject getSubjectByName(String name) throws ClassNotFoundException, SQLException {
         String sql;
         sql = "SELECT * FROM subject WHERE name LIKE '%" + name + "%'";
 
@@ -73,7 +73,7 @@ public class Subject_Data_Access {
         return subject;
     }
 
-    public Subject getSubject(int code) throws ClassNotFoundException, SQLException {
+    public Subject getSubjectByCode(String code) throws ClassNotFoundException, SQLException {
         String sql;
         sql = "SELECT * FROM subject WHERE subject_code LIKE '%" + code + "%'";
 
