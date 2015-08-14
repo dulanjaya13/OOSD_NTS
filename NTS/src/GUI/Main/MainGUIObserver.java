@@ -11,4 +11,5 @@ package GUI.Main;
  */
 public interface MainGUIObserver {
     void searchStudentbyID();
+    void searchLecturerbyID();
 }

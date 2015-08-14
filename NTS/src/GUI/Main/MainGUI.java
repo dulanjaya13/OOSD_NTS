@@ -153,6 +153,24 @@ public class MainGUI extends javax.swing.JFrame implements MainGUIObserver{
             }
         });
         
+        txtLecID.getDocument().addDocumentListener(new DocumentListener() {
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                btnEditInfo1.setEnabled(true);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+            
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
+            }
+        });
+        
         
 //        txtSearchStudentbyName.getDocument().addDocumentListener(new DocumentListener() {
 //            ArrayList<String> students = stuAccess.getStudentNames();
@@ -2414,6 +2432,7 @@ public class MainGUI extends javax.swing.JFrame implements MainGUIObserver{
         lblStuDbControls1.setText("Lecturer Database Controls");
 
         btnEditInfo1.setText("Edit Information");
+        btnEditInfo1.setEnabled(false);
         btnEditInfo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditInfo1ActionPerformed(evt);
@@ -2635,7 +2654,7 @@ public class MainGUI extends javax.swing.JFrame implements MainGUIObserver{
     }//GEN-LAST:event_btnNextRecord1ActionPerformed
 
     private void btnEditInfo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditInfo1ActionPerformed
-        EditLecturerInformation editLecturerInformation = new EditLecturerInformation();
+        EditLecturerInformation editLecturerInformation = new EditLecturerInformation(this, lecAccess, Integer.parseInt(txtLecID.getText()));
         editLecturerInformation.setVisible(true);
     }//GEN-LAST:event_btnEditInfo1ActionPerformed
 
