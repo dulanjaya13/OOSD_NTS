@@ -9,6 +9,7 @@ import Connection.DBConnector;
 import Student_Domain.Student;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
@@ -26,7 +27,8 @@ public class Student_Data_Access {
 
     public void createNewStudent(int ID, String Name, Date DOB, int Batch, String Address, String NIC, int Phone, Date date, String Guadian1Name, int Guadian1Telephone, String Guadian1Address, String Guadian2Name, int Guadian2Telephone, String Guadian2Address, boolean hostel, int level, String Picture) throws ClassNotFoundException, SQLException {
         String sql;
-        sql = "INSERT INTO student VALUES ('" + ID + "', '" + Name + "', '" + DOB + "','"
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sql = "INSERT INTO student VALUES ('" + ID + "', '" + Name + "', '" + sdf.format(DOB) + "','"
                 + Batch + "', '" + Address + "', '" + NIC + "','" + Phone + "', '" + date + "', '"
                 + Guadian1Name + "','" + Guadian1Telephone + "', '" + Guadian1Address + "', '"
                 + Guadian2Name + "','" + Guadian2Telephone + "', '" + Guadian2Address + "', '"
@@ -114,8 +116,9 @@ public class Student_Data_Access {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
         String sql;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         sql = "UPDATE student SET student_id='" + id + "',name='" + name
-                + "',date_of_birth='" + dob + "',batch='" + batch + "',address='"
+                + "',date_of_birth='" + sdf.format(dob) + "',batch='" + batch + "',address='"
                 + address + "',nic='" + nic + "',phone_number='"
                 + phone + "',registration_date='" + date + "',guardian_one_name='"
                 + guadian1Name + "',guardian_one_telephone='" + guadian1Telephone + "',guardian_one_address='"
