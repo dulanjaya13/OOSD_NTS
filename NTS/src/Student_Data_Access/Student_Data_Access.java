@@ -34,14 +34,14 @@ public class Student_Data_Access {
                 + Guadian1Name + "','" + Guadian1Telephone + "', '" + Guadian1Address + "', '"
                 + Guadian2Name + "','" + Guadian2Telephone + "', '" + Guadian2Address + "', '"
                 + ((hostel) ? 1 : 0) + "' , '" + level + "','" + Picture + "')";
-        
+
         connector.updateTable(sql);
     }
 
     public Student getProfile(String name, int batch, int level) throws ClassNotFoundException, SQLException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String sql;
-        sql = "SELECT * FROM student WHERE name LIKE '%" + name + "%' AND batch LIKE '%"+ batch + "%' AND level LIKE '%"+ level + "%'";
+        sql = "SELECT * FROM student WHERE name LIKE '%" + name + "%' AND batch LIKE '%" + batch + "%' AND level LIKE '%" + level + "%'";
 
         //result set to get selected row of the database
         ResultSet rs = connector.getQuerry(sql);
@@ -117,28 +117,32 @@ public class Student_Data_Access {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
         String sql;
+        int intHostel = 0;
+        if (hostel){
+            intHostel=1;
+        }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         sql = "UPDATE student SET student_id='" + id + "',name='" + name
                 + "',date_of_birth='" + sdf.format(dob) + "',batch='" + batch + "',address='"
                 + address + "',nic='" + nic + "',phone_number='"
                 + phone + "',registration_date='" + sdf.format(date) + "',guardian_one_name='"
                 + guadian1Name + "',guardian_one_telephone='" + guadian1Telephone + "',guardian_one_address='"
-                + guadian1Address + "',guardian_two_name='" + guadian2Name+ "',guardian_two_telephone='"
-                +guadian2Telephone+ "',guardian_two_address='" + guadian2Address + "',hostel_student='"
-                + hostel+ "',level='" + level+ "',picture='" + picture
+                + guadian1Address + "',guardian_two_name='" + guadian2Name + "',guardian_two_telephone='"
+                + guadian2Telephone + "',guardian_two_address='" + guadian2Address + "',hostel_student='"
+                + intHostel + "',level='" + level + "',picture='" + picture
                 + "' WHERE student_id='" + id + "'";
 
         connector.updateTable(sql);
     }
-    
+
     public Object[][] getDailyAttendance(int id) throws ClassNotFoundException, SQLException {
         DBConnector db = new DBConnector();
         Student_Data_Access sda = new Student_Data_Access(db);
         String table_Name = "level" + sda.getProfile(id).getLevel() + "_batch" + sda.getProfile(id).getBatch() + "_daily_attendance";
-        
-        String sql = "SELECT * FROM information_schema.columns WHERE TABLE_NAME = '"+table_Name+"'";
+
+        String sql = "SELECT * FROM information_schema.columns WHERE TABLE_NAME = '" + table_Name + "'";
         ResultSet rs = connector.getQuerry(sql);
-        
+
         int row = 0;
         //this iwll get the row count
         while (rs.next()) {
@@ -146,23 +150,22 @@ public class Student_Data_Access {
         }
         //set the cursor of the result set to the beginning
         rs.beforeFirst();
-        
-        Object[][] o = new Object[2][row-1];
-        int i=0;
+
+        Object[][] o = new Object[2][row - 1];
+        int i = 0;
         rs.next();
-        while (rs.next()){
+        while (rs.next()) {
             o[0][i] = rs.getString("COLUMN_NAME");
             i++;
         }
-        sql = "SELECT * FROM "+table_Name+" WHERE student_id LIKE '%" + id + "%'";
+        sql = "SELECT * FROM " + table_Name + " WHERE student_id LIKE '%" + id + "%'";
         rs = connector.getQuerry(sql);
-        i=0;
-        while (rs.next()){
-            o[1][i] = rs.getInt(i+2);
+        i = 0;
+        while (rs.next()) {
+            o[1][i] = rs.getInt(i + 2);
             i++;
         }
-        
-        
+
         return o;
     }
 
@@ -175,8 +178,11 @@ public class Student_Data_Access {
         return null;
     }
 
-    public void deleteStudent(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteStudent(int id) throws ClassNotFoundException, SQLException {
+        String sql;
+
+        sql = "DELETE FROM student WHERE student_id = " + id;
+        connector.updateTable(sql);
     }
 
     public Student getNextStudent(int index) {
@@ -186,6 +192,5 @@ public class Student_Data_Access {
     public Student getPreviousStudent(int index) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 
 }

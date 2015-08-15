@@ -6,6 +6,7 @@
 package Attendance_Data_Access;
 
 import Connection.DBConnector;
+import Student_Data_Access.Student_Data_Access;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -98,78 +99,50 @@ public class Daily_Attendance_Data_Access extends Attendace_Data_Access {
         }
     }
 
-    public int[][] getWarningReports(int batch, int level) throws SQLException, ClassNotFoundException {
-//        //table name that we require
-//        String tableName = "level" + level + "_batch" + batch + "_daily_attendance";
-//        //create sql statememt
-//        String sql;
-//        sql = "SELECT * FROM " + tableName;
-//        ResultSet rs = connector.getQuerry(sql);
-//        //this iwll be used to store the datbase as an array
-//        int[][] list = null;
-//        int row = 0;
-//        //this iwll get the row count
-//        while (rs.next()) {
-//            row++;
-//        }
-//        //set the cursor of the result set to the beginning
-//        rs.beforeFirst();
+//    public int[][] getWarningReports(int batch, int level) throws SQLException, ClassNotFoundException {
 //
-//        ResultSetMetaData rsmd = rs.getMetaData();
-//        int columnsNumber = rsmd.getColumnCount();
-//        list = new int[row][columnsNumber];
-//        //assign the table values to a 2D Array
-//        int i = 0;
-//        //Format formatter = new SimpleDateFormat("yyyy_MM_dd");
-//        //String s = formatter.format(date);
-//        
-//        while (rs.next()) {
-//            for (int j=0; j<columnsNumber ;j++){
-//                list[i][j] = rs.getInt(j+1);
-//            }
-//            
-//            //list[i][1] = rs.getInt(s);
-//            i++;
-//        }
-//        return list;
-        return null;
-    }
+//        return null;
+//    }
 
-    public int[][] getAttendanceReports(int batch, int level) throws SQLException, ClassNotFoundException {
-//        //table name that we require
-//        String tableName = "level" + level + "_batch" + batch + "_daily_attendance";
-//        //create sql statememt
-//        String sql;
-//        sql = "SELECT * FROM " + tableName;
-//        ResultSet rs = connector.getQuerry(sql);
-//        //this iwll be used to store the datbase as an array
-//        int[][] list = null;
-//        int row = 0;
-//        //this iwll get the row count
-//        while (rs.next()) {
-//            row++;
-//        }
-//        //set the cursor of the result set to the beginning
-//        rs.beforeFirst();
-//
-//        ResultSetMetaData rsmd = rs.getMetaData();
-//        int columnsNumber = rsmd.getColumnCount();
-//        list = new int[row][columnsNumber];
-//        //assign the table values to a 2D Array
-//        int i = 0;
-//        //Format formatter = new SimpleDateFormat("yyyy_MM_dd");
-//        //String s = formatter.format(date);
-//        
-//        while (rs.next()) {
-//            for (int j=0; j<columnsNumber ;j++){
-//                list[i][j] = rs.getInt(j+1);
-//            }
-//            
-//            //list[i][1] = rs.getInt(s);
-//            i++;
-//        }
-//        return list;
-        return null;
+    public Object[][] getAttendanceReports(int batch, int level) throws SQLException, ClassNotFoundException {
+        DBConnector db = new DBConnector();
+        //Student_Data_Access sda = new Student_Data_Access(db);
+        String table_Name = "level" + level + "_batch" + batch + "_daily_attendance";
+
+        String sql = "SELECT * FROM information_schema.columns WHERE TABLE_NAME = '" + table_Name + "'";
+        ResultSet rs = connector.getQuerry(sql);
+
+        int row = 0;
+        //this iwll get the row count
+        while (rs.next()) {
+            row++;
+        }
+        //set the cursor of the result set to the beginning
+        rs.beforeFirst();
+
+        String sql2 = "SELECT * FROM " + table_Name;
+        ResultSet rs2 = connector.getQuerry(sql2);
+        ResultSetMetaData rsmd = rs2.getMetaData();
+        int columnsNumber = rsmd.getColumnCount();
+
+        Object[][] o = new Object[row + 1][columnsNumber];
+        int i = 0;
+        rs.next();
+        while (rs.next()) {
+            o[0][i + 1] = rs.getString("COLUMN_NAME");
+            i++;
+        }
+
+        i = 1;
+        while (rs2.next()) {
+            for (int j = 0; j < columnsNumber; j++) {
+                o[i][j] = rs2.getInt(j + 1);
+            }
+            i++;
+        }
+
+        return o;
+
     }
 
 }

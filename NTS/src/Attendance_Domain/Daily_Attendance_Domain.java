@@ -33,10 +33,10 @@ public final class Daily_Attendance_Domain extends Attendance{
         this.table = table;
         getAccess().updateDailyAttendance(this.table,date,this.batch,this.level);
     }
-    public int [][] getWarningReport() throws SQLException, ClassNotFoundException{
-        return getAccess().getWarningReports(this.batch,this.level);
-    } 
-    public int[][] getAttendanceReports() throws SQLException, ClassNotFoundException{
+//    public int [][] getWarningReport() throws SQLException, ClassNotFoundException{
+//        return getAccess().getWarningReports(this.batch,this.level);
+//    } 
+    public Object[][] getAttendanceReports() throws SQLException, ClassNotFoundException{
         return getAccess().getAttendanceReports(this.batch,this.level);
     }
 

@@ -29,7 +29,7 @@ public class Subject_Attendance_Data_Access extends Attendace_Data_Access {
         String tableName = "level" + level + "_batch" + batch + "_" + subject.getCode() + "_subject_attendance";
         //this will create final sql statement for execution
         String sql;
-        Format formatter = new SimpleDateFormat("yyyy_MM_dd");
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         String s = formatter.format(date);
         sql = "CREATE TABLE " + tableName + " (student_id int NOT NULL, L" + LectureNumber + "_" + s + " int NOT NULL, PRIMARY KEY (student_id));";
 
@@ -59,7 +59,7 @@ public class Subject_Attendance_Data_Access extends Attendace_Data_Access {
         list = new int[row][2];
         //assign the table values to a 2D Array
         int i = 0;
-        Format formatter = new SimpleDateFormat("yyyy_MM_dd");
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         String s = formatter.format(date);
         while (rs.next()) {
             list[i][0] = rs.getInt("student_id");
@@ -74,7 +74,7 @@ public class Subject_Attendance_Data_Access extends Attendace_Data_Access {
         String tableName = "level" + level + "_batch" + batch + "_" + subject.getCode() + "_subject_attendance";
         String sql;
 
-        Format formatter = new SimpleDateFormat("yyyy_MM_dd");
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         String s = formatter.format(date);
 
         //String sql2 = "IF COL_LENGTH( "+tableName+" , L" + LectureNumber + "_" + s+ " ) IS NULL BEGIN ALTER TABLE "+tableName+" ADD [L" + LectureNumber + "_" + s+"] INT END";
