@@ -7,6 +7,7 @@ package Student_Data_Access;
 
 import Connection.DBConnector;
 import Student_Domain.Student;
+import Subject_Domain.Subject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -29,7 +30,7 @@ public class Student_Data_Access {
         String sql;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         sql = "INSERT INTO student VALUES ('" + ID + "', '" + Name + "', '" + sdf.format(DOB) + "','"
-                + Batch + "', '" + Address + "', '" + NIC + "','" + Phone + "', '" + date + "', '"
+                + Batch + "', '" + Address + "', '" + NIC + "','" + Phone + "', '" + sdf.format(date) + "', '"
                 + Guadian1Name + "','" + Guadian1Telephone + "', '" + Guadian1Address + "', '"
                 + Guadian2Name + "','" + Guadian2Telephone + "', '" + Guadian2Address + "', '"
                 + ((hostel) ? 1 : 0) + "' , '" + level + "','" + Picture + "')";
@@ -120,7 +121,7 @@ public class Student_Data_Access {
         sql = "UPDATE student SET student_id='" + id + "',name='" + name
                 + "',date_of_birth='" + sdf.format(dob) + "',batch='" + batch + "',address='"
                 + address + "',nic='" + nic + "',phone_number='"
-                + phone + "',registration_date='" + date + "',guardian_one_name='"
+                + phone + "',registration_date='" + sdf.format(date) + "',guardian_one_name='"
                 + guadian1Name + "',guardian_one_telephone='" + guadian1Telephone + "',guardian_one_address='"
                 + guadian1Address + "',guardian_two_name='" + guadian2Name+ "',guardian_two_telephone='"
                 +guadian2Telephone+ "',guardian_two_address='" + guadian2Address + "',hostel_student='"
@@ -130,8 +131,61 @@ public class Student_Data_Access {
         connector.updateTable(sql);
     }
     
-    public int[][] getDailyAttendance(int id) {
+    public Object[][] getDailyAttendance(int id) throws ClassNotFoundException, SQLException {
+        DBConnector db = new DBConnector();
+        Student_Data_Access sda = new Student_Data_Access(db);
+        String table_Name = "level" + sda.getProfile(id).getLevel() + "_batch" + sda.getProfile(id).getBatch() + "_daily_attendance";
+        
+        String sql = "SELECT * FROM information_schema.columns WHERE TABLE_NAME = '"+table_Name+"'";
+        ResultSet rs = connector.getQuerry(sql);
+        
+        int row = 0;
+        //this iwll get the row count
+        while (rs.next()) {
+            row++;
+        }
+        //set the cursor of the result set to the beginning
+        rs.beforeFirst();
+        
+        Object[][] o = new Object[2][row-1];
+        int i=0;
+        rs.next();
+        while (rs.next()){
+            o[0][i] = rs.getString("COLUMN_NAME");
+            i++;
+        }
+        sql = "SELECT * FROM "+table_Name+" WHERE student_id LIKE '%" + id + "%'";
+        rs = connector.getQuerry(sql);
+        i=0;
+        while (rs.next()){
+            o[1][i] = rs.getInt(i+2);
+            i++;
+        }
+        
+        
+        return o;
+    }
+
+    public Object[][] getAllResults(int index, int level) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int[][] getSubjectAttendance(int index, Subject subject) {
+        //return new Subject_Data_Access.Subject_Data_Access(new DBConnector().getStudentSubjectAttendance(index,subject)); //To change body of generated methods, choose Tools | Templates.
         return null;
     }
+
+    public void deleteStudent(int index) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Student getNextStudent(int index) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Student getPreviousStudent(int index) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 
 }
