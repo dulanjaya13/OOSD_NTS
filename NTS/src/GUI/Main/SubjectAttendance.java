@@ -41,7 +41,6 @@ public class SubjectAttendance extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lbldate2 = new javax.swing.JLabel();
         cmbyear1 = new javax.swing.JComboBox();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
 
         lbldate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbldate.setText("Semester Started");
@@ -90,8 +89,7 @@ public class SubjectAttendance extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbyear1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbyear1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(111, Short.MAX_VALUE))
             .addGroup(pnlsubOverallDailyAttendanceLayout.createSequentialGroup()
                 .addContainerGap()
@@ -112,9 +110,7 @@ public class SubjectAttendance extends javax.swing.JFrame {
                             .addComponent(lbldate2)
                             .addComponent(cmbyear1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbldate)
-                            .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lbldate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlsubOverallDailyAttendanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbldate1)
@@ -185,7 +181,6 @@ public class SubjectAttendance extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private javax.swing.JLabel lbldate;
     private javax.swing.JLabel lbldate1;
     private javax.swing.JLabel lbldate2;
